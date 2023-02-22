@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import Pokemon from './components/Pokemon.js'
+
+
+
+
+// ATTENTION!!!!!!!!!!
+// I SWITCHED TO PERMANENT DOMAIN
+// const url = 'https://course-api.com/react-tours-project'
+
+
+
+
 
 function App() {
+
+  const [index, setIndex] = useState(1);
+
+  function pokemonGenerator() {
+    const randomNumber = Math.floor(Math.random() * 1008 + 1);
+    setIndex(randomNumber);
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Pokemon index={index} />
+      <button onClick={pokemonGenerator}> Generate </button>
+
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
