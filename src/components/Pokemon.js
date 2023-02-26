@@ -1,35 +1,31 @@
-import React, { useState, useEffect } from 'react'
+import PokeFetch from "./PokeFetch.js";
+import { useState } from 'react'
+import '../pokemon.css'
 
 
+function Pokemon() {
 
+    const [index, setIndex] = useState(1);
 
+    function pokemonGenerator() {
+        const randomNumber = Math.floor(Math.random() * 1008 + 1);
+        setIndex(randomNumber);
+    }
 
-function Pokemon({ index }) {
+    function submitHandle(event) {
+        setIndex(event.target.value)
+    }
 
-    const pokeUrl = `https://pokeapi.co/api/v2/pokemon/${index}`;
-
-    const [name, setName] = useState("");
-    const [image, setImage] = useState("");
-
-    useEffect(() => {
-
-        fetch(pokeUrl)
-            .then((response) => {
-                const data = response.json();
-                return data;
-            })
-            .then((parsedData) => {
-                setName(parsedData.name);
-                setImage(parsedData.sprites.front_default);
-            })
-
-    }, [index])
-
-    return <div className="pokemon-div">
-        <img className="pokemon-div-img" src={image} alt="" />
-        <p> {name} </p>
-    </div>
-
+    return (
+        <div className="pokemon">
+            <div className="pokemon-div">
+                <PokeFetch index={index} />
+                <button className="pokemon-btn" onClick={pokemonGenerator}> Generate </button>
+                <input type="number" value={index} onChange={submitHandle}></input>
+            </div>
+        </div>
+    )
 }
 
-export default Pokemon
+export default Pokemon;
+

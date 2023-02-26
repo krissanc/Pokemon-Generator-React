@@ -1,0 +1,36 @@
+.pokemon {
+    background-color: antiquewhite;
+    width: 350px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    border-radius: 2%;
+    box-shadow: 5px, 5px, 40px, 30px, black;
+
+}
+
+.pokemon-div {
+    align-content: center;
+}
+
+.pokemon-btn {
+    display: block;
+    justify-content: end;
+}
+
+.pokemon-img {
+    width: 200px;
+    height: 200px;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.pokemon-img:hover {
+    scale: 1.15;
+}
